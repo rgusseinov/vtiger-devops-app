@@ -1,0 +1,20 @@
+# For production testing
+version: '3.8'
+
+services:
+  app:
+    image: ruslan0688/vtiger-devops-app
+    build:
+      context: .
+      dockerfile: Dockerfile.production
+    # command: [ "sh", "-c", "php artisan migrate:fresh && php artisan test" ]
+    environment:
+      - DB_PORT=${DB_PORT}
+      - DB_HOST=${DB_HOST}
+      - DB_DATABASE=${DB_DATABASE}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - "./app:/var/www/html"
+    ports:
+      - "81:80" 

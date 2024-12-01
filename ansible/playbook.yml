@@ -1,0 +1,70 @@
+- hosts: all
+  become: yes
+  tags: deploy
+  vars:
+    image_version: "{{ image_version | default('latest') }}"
+
+  tasks:
+    - name: Debug db_connection variable and image version
+      debug:
+        msg:
+          - "The image version is {{ image_version }}"
+
+    - name: Stop running container
+      community.docker.docker_container:
+        name: vtiger-devops-app
+        state: stopped
+      failed_when: false
+
+    - name: Remove stopped container
+      community.docker.docker_container:
+        name: vtiger-devops-app
+        state: absent
+
+    - name: Remove image
+      community.docker.docker_image:
+        name: ruslan0688/vtiger-devops-app
+        state: absent
+
+    - name: Pull the specific version of the image
+      community.docker.docker_image:
+        name: "ruslan0688/vtiger-devops-app"
+        tag: "{{ image_version }}"
+        source: pull
+        force_source: yes # In order to pull latest version of image
+
+    - name: create .env file
+      ansible.builtin.template:
+        src: templates/.env.j2
+        dest: .env
+        mode: "0644"
+
+    - name: Deploy config.inc.php file for vTiger
+      template:
+        src: templates/config.inc.php.j2
+        dest: config.inc.php
+        mode: '0644'
+
+    - name: Run vtiger app on container
+      community.docker.docker_container:
+        image: "ruslan0688/vtiger-devops-app:{{ image_version }}"
+        platform: linux/amd64
+        name: vtiger-devops-app
+        state: started
+        restart_policy: "always"
+        restart: true
+        ports:
+          - "80:80"
+        volumes:
+          - .env:/var/www/html/.env
+    - name: Copy config.inc.php into Docker container
+      command: docker cp config.inc.php vtiger-devops-app:/var/www/html/config.inc.php
+
+    - name: Verify deployment
+      uri:
+        url: http://localhost
+        status_code: 200
+      register: result
+    - name: Debug deployment status
+      debug:
+        msg: "Deployment status: {{ result.status }}"
