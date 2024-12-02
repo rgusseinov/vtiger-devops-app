@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2024-11-24 13:12:15
+<?php /* Smarty version Smarty-3.1.7, created on 2024-12-02 10:15:25
          compiled from "/var/www/html/includes/runtime/../../layouts/v7/modules/Contacts/DetailViewHeaderTitle.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:17612909326743262f3efed5-33728615%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'be92fd4b088956c2a95715790ddd9316109cc55b' => 
     array (
       0 => '/var/www/html/includes/runtime/../../layouts/v7/modules/Contacts/DetailViewHeaderTitle.tpl',
-      1 => 1732453931,
+      1 => 1732458173,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.7',
+  'unifunc' => 'content_6743262f3fd53',
   'variables' => 
   array (
     'SELECTED_MENU_CATEGORY' => 0,
@@ -29,11 +31,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'MODULE_NAME' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_6743262f3fd53',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_6743262f3fd53')) {function content_6743262f3fd53($_smarty_tpl) {?>
-<div class="col-lg-6 col-md-6 col-sm-6">111111111111111<div class="record-header clearfix "><div class="recordImage bgcontacts app-<?php echo $_smarty_tpl->tpl_vars['SELECTED_MENU_CATEGORY']->value;?>
+<div class="col-lg-6 col-md-6 col-sm-6"><h2>Test heading!</h2><p>Some text here</p><div class="record-header clearfix "><div class="recordImage bgcontacts app-<?php echo $_smarty_tpl->tpl_vars['SELECTED_MENU_CATEGORY']->value;?>
 "><?php $_smarty_tpl->tpl_vars['IMAGE_DETAILS'] = new Smarty_variable($_smarty_tpl->tpl_vars['RECORD']->value->getImageDetails(), null, 0);?><?php  $_smarty_tpl->tpl_vars['IMAGE_INFO'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['IMAGE_INFO']->_loop = false;
  $_smarty_tpl->tpl_vars['ITER'] = new Smarty_Variable;
  $_from = $_smarty_tpl->tpl_vars['IMAGE_DETAILS']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
