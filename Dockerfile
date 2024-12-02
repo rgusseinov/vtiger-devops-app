@@ -18,4 +18,6 @@ CMD ["echo", "This is Dockerfile"]
 # Set the working directory
 WORKDIR /var/www/html
 
+RUN chown -R www-data:www-data /var/www/html
+
 CMD ["apache2-foreground"]
