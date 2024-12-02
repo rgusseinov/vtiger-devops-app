@@ -13,7 +13,28 @@ class Contacts_Detail_View extends Accounts_Detail_View {
 
 	function __construct() {
 		parent::__construct();
+		$this->exposeMethod('contactList');
 	}
+
+	public function contactList(Vtiger_Request $request){
+		global $adb;
+
+		$query = "SELECT firstname, lastname FROM vtiger_ws_mycontracts";
+		$result = $adb->pquery($query, []);
+
+		$contacts = [];
+		if ($adb->num_rows($result) > 0) {
+				while ($row = $adb->fetch_array($result)) {
+						$contacts[] = [
+								'firstname' => $row['firstname'],
+								'lastname' => $row['lastname']
+						];
+				}
+		}
+
+		echo "<pre>"; print_r($contacts);exit;
+	}
+
 
 	public function showModuleDetailView(Vtiger_Request $request) {
 		$recordId = $request->get('record');
