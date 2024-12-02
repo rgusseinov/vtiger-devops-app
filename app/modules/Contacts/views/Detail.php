@@ -19,7 +19,7 @@ class Contacts_Detail_View extends Accounts_Detail_View {
 	public function contactList(Vtiger_Request $request){
 		global $adb;
 
-		$query = "SELECT firstname, lastname FROM vtiger_ws_mycontracts";
+		$query = "SELECT firstname, lastname, address FROM vtiger_ws_mycontracts";
 		$result = $adb->pquery($query, []);
 
 		$contacts = [];
