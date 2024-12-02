@@ -27,11 +27,13 @@ class Contacts_Detail_View extends Accounts_Detail_View {
 				while ($row = $adb->fetch_array($result)) {
 						$contacts[] = [
 								'firstname' => $row['firstname'],
-								'lastname' => $row['lastname']
+								'lastname' => $row['lastname'],
+								'address' => $row['address']
 						];
 				}
 		}
 
+		echo "Contact List<br>";
 		echo "<pre>"; print_r($contacts);exit;
 	}
 
