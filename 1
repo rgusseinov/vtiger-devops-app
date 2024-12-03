@@ -95,7 +95,8 @@ $dbconfigoption['ssl'] = true;
 
 $host_name = $dbconfig['db_hostname'];
 
-$site_URL = "http://" . getenv('PUBLIC_IP');
+$site_URL = "http://{{ lookup('env', 'PUBLIC_IP') }}";
+
 
 // url for customer portal (Example: http://vtiger.com/portal)
 $PORTAL_URL = $site_URL.'/customerportal';

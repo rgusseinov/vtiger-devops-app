@@ -3,12 +3,20 @@
   tags: deploy
   vars:
     image_version: "{{ image_version | default('latest') }}"
+    public_ip: "{{ lookup('vars', 'ansible_facts.ipify_public_ip') }}"
 
   tasks:
-    - name: Debug db_connection variable and image version
+    - name: Show the docker image version
       debug:
         msg:
-          - "The image version is {{ image_version }}"
+          - "Image version = {{ image_version }}"
+    
+    - name: Fetch public IP using ipify
+      community.general.ipify_facts:
+
+    - name: Set public IP variable
+      set_fact:
+        public_ip: "{{ ansible_facts.ipify_public_ip }}"
 
     - name: Stop running container
       community.docker.docker_container:
@@ -62,7 +70,7 @@
 
     - name: Verify deployment
       uri:
-        url: http://localhost
+        url: "http://{{ public_ip }}"
         status_code: 200
       register: result
     - name: Debug deployment status
