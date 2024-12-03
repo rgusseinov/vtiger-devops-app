@@ -35,6 +35,7 @@ class Contacts_Detail_View extends Accounts_Detail_View {
 
 		echo "Contact List<br>";
 		echo "Show custom module contacts<br>";
+		echo "Mehtab code.<br>";
 		echo "<pre>"; print_r($contacts);exit;
 	}
 

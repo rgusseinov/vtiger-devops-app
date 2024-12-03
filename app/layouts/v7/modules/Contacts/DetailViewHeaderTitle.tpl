@@ -11,8 +11,6 @@
 -->*}
 {strip}
    <div class="col-lg-6 col-md-6 col-sm-6">
-	  <h2>Test heading!</h2>
-		<p>Some text here</p>
 		<div class="record-header clearfix ">
 		 <div class="recordImage bgcontacts app-{$SELECTED_MENU_CATEGORY}">
 			{assign var=IMAGE_DETAILS value=$RECORD->getImageDetails()}
