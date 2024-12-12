@@ -40,6 +40,7 @@ class Contacts_Detail_View extends Accounts_Detail_View {
 		echo "This is new procurement module...<br>";
 		echo "This is legal claims module<br>";
 		echo "New feature by IT team.<br>";
+		echo "New feature by it dev.<br>";
 		echo "<pre>"; print_r($contacts);exit;
 	}
 
