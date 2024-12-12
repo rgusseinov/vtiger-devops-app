@@ -13,4 +13,3 @@ vault_password
 *.sqlite
 db/
 terraform/
-app/test/templates_c/

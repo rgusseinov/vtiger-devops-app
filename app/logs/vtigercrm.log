@@ -2115,3 +2115,14 @@
 								AND (TIME_FORMAT(vtiger_activity_reminder_popup.time_start,'%H:%i') <= ?))
 								AND vtiger_activity.eventstatus <> 'Held' AND (vtiger_activity.status <> 'Completed' OR vtiger_activity.status IS NULL) LIMIT 20
 2024-11-28T08:23:40+00:00 DEBUG VT Prepared sql query parameters : [1,2024-11-28,08:24]
+2024-12-02T10:09:10+00:00 INFO  VT PearDatabase ->ADODB disconnect
+2024-12-02T10:09:11+00:00 DEBUG VT Prepared sql query being executed : SELECT * FROM vtiger_organizationdetails WHERE organization_id=?
+2024-12-02T10:09:11+00:00 DEBUG VT Prepared sql query parameters : [1]
+2024-12-02T10:09:12+00:00 DEBUG VT unable to write file /var/www/html/includes/runtime/../../test/templates_c/v7/wrt674d87489f2e0:#0 /var/www/html/libraries/Smarty/libs/sysplugins/smarty_internal_template.php(201): Smarty_Internal_Write_File::writeFile('/var/www/html/i...', '<?php /* Smarty...', Object(Vtiger_Viewer))
+#1 /var/www/html/libraries/Smarty/libs/sysplugins/smarty_internal_templatebase.php(164): Smarty_Internal_Template->compileTemplateSource()
+#2 /var/www/html/libraries/Smarty/libs/sysplugins/smarty_internal_templatebase.php(374): Smarty_Internal_TemplateBase->fetch('modules/Users/L...', NULL, NULL, Object(Vtiger_Viewer), true)
+#3 /var/www/html/includes/runtime/Viewer.php(188): Smarty_Internal_TemplateBase->display('modules/Users/L...')
+#4 /var/www/html/modules/Users/views/Login.php(82): Vtiger_Viewer->view('Login.tpl', 'Users')
+#5 /var/www/html/includes/main/WebUI.php(215): Users_Login_View->process(Object(Vtiger_Request))
+#6 /var/www/html/index.php(20): Vtiger_WebUI->process(Object(Vtiger_Request))
+#7 {main}
